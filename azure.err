@@ -1,28 +1,13 @@
-Wed Jan 14 2015 15:56:54 GMT-0800 (PST):
-{ [Error: The server encountered an internal error. Please retry the request.]
-  stack: [Getter/Setter],
-  code: 'InternalError',
-  statusCode: 500,
-  requestId: '898f62dff1e666e3bc3a265882e32e26',
-  __frame: 
-   { name: '__1',
-     line: 35,
-     file: '/Users/HR10/.nvm/v0.10.25/lib/node_modules/azure-cli/lib/commands/asm/site.scale._js',
-     prev: undefined,
-     active: false,
-     offset: 25,
-     col: 6 },
-  rawStack: [Getter] }
-Error: The server encountered an internal error. Please retry the request.
-    at Function.ServiceClient._normalizeError (/Users/HR10/.nvm/v0.10.25/lib/node_modules/azure-cli/node_modules/azure-common/lib/services/serviceclient.js:809:23)
-    at /Users/HR10/.nvm/v0.10.25/lib/node_modules/azure-cli/node_modules/azure-common/lib/services/filters/errorhandlingfilter.js:44:29
-    at Request._callback (/Users/HR10/.nvm/v0.10.25/lib/node_modules/azure-cli/node_modules/azure-common/lib/http/request-pipeline.js:109:14)
-    at Request.self.callback (/Users/HR10/.nvm/v0.10.25/lib/node_modules/azure-cli/node_modules/request/request.js:129:22)
-    at Request.EventEmitter.emit (events.js:98:17)
-    at Request.<anonymous> (/Users/HR10/.nvm/v0.10.25/lib/node_modules/azure-cli/node_modules/request/request.js:873:14)
-    at Request.EventEmitter.emit (events.js:117:20)
-    at IncomingMessage.<anonymous> (/Users/HR10/.nvm/v0.10.25/lib/node_modules/azure-cli/node_modules/request/request.js:824:12)
-    at IncomingMessage.EventEmitter.emit (events.js:117:20)
-    at _stream_readable.js:920:16
-    at __1 (/Users/HR10/.nvm/v0.10.25/lib/node_modules/azure-cli/lib/commands/asm/site.scale._js:60:6)
-
+Thu Jan 15 2015 12:09:48 GMT-0800 (PST):
+{ [Error: Cannot find module '../../commands/websites/websitesclient'] code: 'MODULE_NOT_FOUND' }
+Error: Cannot find module '../../commands/websites/websitesclient'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/Users/HR10/.nvm/v0.10.25/lib/node_modules/azure-cli/lib/util/git/linkedrevisioncontrol._js:25:22)
+    at Module._compile (module.js:456:26)
+    at Module.pModule._compile (/Users/HR10/.nvm/v0.10.25/lib/node_modules/azure-cli/node_modules/streamline/lib/compiler/register.js:44:15)
+    at Object.streamliners._js [as ._js] (/Users/HR10/.nvm/v0.10.25/lib/node_modules/azure-cli/node_modules/streamline/lib/compiler/underscored.js:28:11)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
