@@ -1,28 +1,28 @@
-Wed Jan 14 2015 15:31:25 GMT-0800 (PST):
-{ [TypeError: Object #<Subscription> has no method 'getPortalUrl']
+Wed Jan 14 2015 15:56:54 GMT-0800 (PST):
+{ [Error: The server encountered an internal error. Please retry the request.]
   stack: [Getter/Setter],
+  code: 'InternalError',
+  statusCode: 500,
+  requestId: '898f62dff1e666e3bc3a265882e32e26',
   __frame: 
-   { name: 'portalGitInitInstruction__15',
-     line: 670,
-     file: '/Users/HR10/.nvm/v0.10.25/lib/node_modules/azure-cli/lib/commands/asm/websites/websitesclient._js',
-     prev: 
-      { name: 'fallbackToPortal',
-        line: 692,
-        file: '/Users/HR10/.nvm/v0.10.25/lib/node_modules/azure-cli/lib/commands/asm/websites/websitesclient._js',
-        prev: [Object],
-        active: false,
-        offset: 2,
-        col: 6 },
-     active: true,
-     offset: 12,
-     col: 8 },
+   { name: '__1',
+     line: 35,
+     file: '/Users/HR10/.nvm/v0.10.25/lib/node_modules/azure-cli/lib/commands/asm/site.scale._js',
+     prev: undefined,
+     active: false,
+     offset: 25,
+     col: 6 },
   rawStack: [Getter] }
-TypeError: Object #<Subscription> has no method 'getPortalUrl'
-    at portalGitInitInstruction__15 (/Users/HR10/.nvm/v0.10.25/lib/node_modules/azure-cli/lib/commands/asm/websites/websitesclient._js:684:54)
-    at portalGitInitInstruction__15 (/Users/HR10/.nvm/v0.10.25/lib/node_modules/azure-cli/lib/commands/asm/websites/websitesclient._js:682:8)
-    at fallbackToPortal (/Users/HR10/.nvm/v0.10.25/lib/node_modules/azure-cli/lib/commands/asm/websites/websitesclient._js:694:6)
-    at getPublishingUser__16 (/Users/HR10/.nvm/v0.10.25/lib/node_modules/azure-cli/lib/commands/asm/websites/websitesclient._js:728:8)
-    at LinkedRevisionControlClient_prototype__addRemotesToLocalGitRepo__5 (/Users/HR10/.nvm/v0.10.25/lib/node_modules/azure-cli/lib/util/git/linkedrevisioncontrol._js:177:29)
-    at GitClient_prototype_deploy__7 (/Users/HR10/.nvm/v0.10.25/lib/node_modules/azure-cli/lib/util/git/linkedrevisioncontrol._js:214:2)
-    at __4 (/Users/HR10/.nvm/v0.10.25/lib/node_modules/azure-cli/lib/commands/asm/site._js:262:12)
+Error: The server encountered an internal error. Please retry the request.
+    at Function.ServiceClient._normalizeError (/Users/HR10/.nvm/v0.10.25/lib/node_modules/azure-cli/node_modules/azure-common/lib/services/serviceclient.js:809:23)
+    at /Users/HR10/.nvm/v0.10.25/lib/node_modules/azure-cli/node_modules/azure-common/lib/services/filters/errorhandlingfilter.js:44:29
+    at Request._callback (/Users/HR10/.nvm/v0.10.25/lib/node_modules/azure-cli/node_modules/azure-common/lib/http/request-pipeline.js:109:14)
+    at Request.self.callback (/Users/HR10/.nvm/v0.10.25/lib/node_modules/azure-cli/node_modules/request/request.js:129:22)
+    at Request.EventEmitter.emit (events.js:98:17)
+    at Request.<anonymous> (/Users/HR10/.nvm/v0.10.25/lib/node_modules/azure-cli/node_modules/request/request.js:873:14)
+    at Request.EventEmitter.emit (events.js:117:20)
+    at IncomingMessage.<anonymous> (/Users/HR10/.nvm/v0.10.25/lib/node_modules/azure-cli/node_modules/request/request.js:824:12)
+    at IncomingMessage.EventEmitter.emit (events.js:117:20)
+    at _stream_readable.js:920:16
+    at __1 (/Users/HR10/.nvm/v0.10.25/lib/node_modules/azure-cli/lib/commands/asm/site.scale._js:60:6)
 
