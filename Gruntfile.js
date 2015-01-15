@@ -20,7 +20,8 @@ module.exports = function(grunt) {
     mochaTest: {
       test: {
         options: {
-          reporter: 'spec'
+          reporter: 'spec',
+          // bail: true
         },
         src: ['test/**/*.js']
       }
@@ -48,7 +49,7 @@ module.exports = function(grunt) {
         'public/**/*.js'
       ],
       options: {
-        force: 'true',
+        force: false,
         jshintrc: '.jshintrc',
         ignores: [
           'public/lib/**/*.js',
@@ -63,7 +64,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: 'public',
           src: ['*.css', '!*.min.css'],
-          dest: 'public',
+          dest: 'public/dist',
           ext: '.min.css'
         }]
       }
@@ -138,8 +139,9 @@ module.exports = function(grunt) {
 
   grunt.registerTask('deploy', [
     'jshint',
-    'mochaTest',
-    'build'
+    'test',
+    'build',
+    'upload'
   ]);
 
 
