@@ -1,6 +1,8 @@
 var dbConfig = require('../config');
+var mongoose = require('mongoose');
 var usersSchema = dbConfig.usersSchema;
 var bcrypt = require('bcrypt-nodejs');
+var Promise = require('bluebird');
 
 // console.log('dbconfig', dbConfig);
 // console.log('usersSchema', usersSchema);
@@ -30,18 +32,6 @@ usersSchema.pre("save", function(next) {
 });
 
 User = mongoose.model('User', usersSchema);
-
-
-var user = new User({username: "ruben", password: "111"});
-user.save(function(err, user) {
-  console.log("user -->", user);
-  user.comparePassword("111", function(match) {
-    console.log("successful? -->", match);
-  })
-  user.comparePassword("000", function(match) {
-    console.log("successful? -->", match);
-  })
-})
 
 module.exports = User;
 

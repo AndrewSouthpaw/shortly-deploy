@@ -1,43 +1,43 @@
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/shortlydb')
 
-var bcrypt = require('bcrypt-nodejs');
-var Promise = require('bluebird');
-
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error'));
+
+exports.db = db;
 
 // IN PROGRESS.
 // Currently exporting multiple objects (db, usersSchema, etc.) that would
 // require refactor of other stuff
 
-// exports.usersSchema = mongoose.Schema({
-//   username: { type: String, required: true },
-//   password: { type: String, required: true },
-//   createdAt: { type: Date, default: Date.now }
-// });
+exports.usersSchema = mongoose.Schema({
+  username: { type: String, required: true },
+  password: { type: String, required: true },
+  createdAt: { type: Date, default: Date.now }
+});
 
-exports.db = db;
+exports.linksSchema = mongoose.Schema({
+  url: { type: String, required: true, unique: true },
+  base_url: String,
+  code: String,
+  title: String,
+  visits: { type: Number, default: 0 },
+  createdAt: { type: Date, default: Date.now }
+});
+
 
 db.once('open', function (cb) {
   console.log('connected to mongodb');
 
-  var linkSchema = mongoose.Schema({
-    url: { type: String, required: true },
-    base_url: String,
-    code: { type: String, required: true },
-    title: String,
-    visits: { type: Number, required: true },
-    createdAt: { type: Date, default: Date.now }
-  });
 
-  var Link = mongoose.model('Link', linkSchema);
 
-  exports.usersSchema = mongoose.Schema({
-    username: { type: String, required: true },
-    password: { type: String, required: true },
-    createdAt: { type: Date, default: Date.now }
-  });
+
+
+  // exports.usersSchema = mongoose.Schema({
+  //   username: { type: String, required: true },
+  //   password: { type: String, required: true },
+  //   createdAt: { type: Date, default: Date.now }
+  // });
 
 
   // usersSchema.methods.comparePassword = function(attemptedPassword, callback) {
