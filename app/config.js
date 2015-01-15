@@ -6,6 +6,19 @@ var Promise = require('bluebird');
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error'));
+
+// IN PROGRESS.
+// Currently exporting multiple objects (db, usersSchema, etc.) that would
+// require refactor of other stuff
+
+// exports.usersSchema = mongoose.Schema({
+//   username: { type: String, required: true },
+//   password: { type: String, required: true },
+//   createdAt: { type: Date, default: Date.now }
+// });
+
+exports.db = db;
+
 db.once('open', function (cb) {
   console.log('connected to mongodb');
 
@@ -20,48 +33,49 @@ db.once('open', function (cb) {
 
   var Link = mongoose.model('Link', linkSchema);
 
-  var usersSchema = mongoose.Schema({
+  exports.usersSchema = mongoose.Schema({
     username: { type: String, required: true },
     password: { type: String, required: true },
     createdAt: { type: Date, default: Date.now }
   });
 
-  usersSchema.methods.comparePassword = function(attemptedPassword, callback) {
-    bcrypt.compare(attemptedPassword, this.password, function(err, isMatch) {
-      callback(isMatch);
-    });
-  };
 
-  usersSchema.methods.hashPassword = function(password){
-    var cipher = Promise.promisify(bcrypt.hash);
-    // console.log(cipher(password, null, null).bind(this).then(function(hash) {return hash;}))
-    return cipher(password, null, null).bind(this)  // return promise
-  };
+  // usersSchema.methods.comparePassword = function(attemptedPassword, callback) {
+  //   bcrypt.compare(attemptedPassword, this.password, function(err, isMatch) {
+  //     callback(isMatch);
+  //   });
+  // };
 
-  usersSchema.pre("save", function(next) {
-    var user = this;
-    if( !user.isModified("password")) {  // only hash the password the first time
-      return next();
-    }
-    this.hashPassword(user.password)
-    .then(function (hash) {
-      user.password = hash;
-      next();
-    })
-  });
+  // usersSchema.methods.hashPassword = function(password){
+  //   var cipher = Promise.promisify(bcrypt.hash);
+  //   // console.log(cipher(password, null, null).bind(this).then(function(hash) {return hash;}))
+  //   return cipher(password, null, null).bind(this)  // return promise
+  // };
 
-  var User = mongoose.model('User', usersSchema);
+  // usersSchema.pre("save", function(next) {
+  //   var user = this;
+  //   if( !user.isModified("password")) {  // only hash the password the first time
+  //     return next();
+  //   }
+  //   this.hashPassword(user.password)
+  //   .then(function (hash) {
+  //     user.password = hash;
+  //     next();
+  //   })
+  // });
 
-  var user = new User({username: "ruben", password: "111"});
-  user.save(function(err, user) {
-    console.log("user -->", user);
-    user.comparePassword("111", function(match) {
-      console.log("successful? -->", match);
-    })
-    user.comparePassword("000", function(match) {
-      console.log("successful? -->", match);
-    })
-  })
+  // var User = mongoose.model('User', usersSchema);
+
+  // var user = new User({username: "ruben", password: "111"});
+  // user.save(function(err, user) {
+  //   console.log("user -->", user);
+  //   user.comparePassword("111", function(match) {
+  //     console.log("successful? -->", match);
+  //   })
+  //   user.comparePassword("000", function(match) {
+  //     console.log("successful? -->", match);
+  //   })
+  // })
 
 
   // db.knex.schema.hasTable('users').then(function(exists) {
@@ -125,4 +139,4 @@ db.once('open', function (cb) {
 //   }
 // });
 
-module.exports = db;
+// module.exports = db;
