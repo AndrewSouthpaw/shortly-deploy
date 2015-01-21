@@ -1,2 +1,9 @@
 #shortly-deploy
-This is a project I completed as a student at [Hack Reactor](http://hackreactor.com). This project was worked on with a pair.
+
+This is a project completed in a two-day sprint with a pair while at Hack Reactor.
+
+Emphasis of this sprint:
+
+* Automation with grunt
+* Deployment with Azure
+* Refactoring from SQL to MongoDB / Mongoose
